@@ -1,0 +1,17 @@
+log_level: "debug"
+http:
+  host: "127.0.0.1"
+  port: 8080
+  workers: 1
+  debug: false
+  log_level: "warn"
+database:
+  host: "127.0.0.1"
+  port: 3306
+  user: "test_app"
+  password: "password"
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  password: ""
+  db: 0
