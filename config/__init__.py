@@ -1,1 +1,1 @@
-from .config import cfg
+from .config import cfg, load_config
