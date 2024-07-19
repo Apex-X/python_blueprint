@@ -5,6 +5,10 @@ import yaml
 import json
 
 
+class App(BaseModel):
+    migrations_path: str
+
+
 class HTTP(BaseModel):
     host: str
     port: int
@@ -18,6 +22,7 @@ class Database(BaseModel):
     port: int
     user: str
     password: str
+    db_name: str
 
 
 class Redis(BaseModel):
@@ -29,6 +34,7 @@ class Redis(BaseModel):
 
 class Config(BaseModel):
     log_level: str
+    app: App
     http: HTTP
     database: Database
     redis: Redis
