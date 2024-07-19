@@ -1,4 +1,6 @@
 log_level: "debug"
+app:
+  migrations_path: "./migrations"
 http:
   host: "127.0.0.1"
   port: 8080
@@ -8,8 +10,9 @@ http:
 database:
   host: "127.0.0.1"
   port: 3306
-  user: "test_app"
+  user: "@apex:project_name:var_app"
   password: "password"
+  db_name: "@apex:project_name:var"
 redis:
   host: "127.0.0.1"
   port: 6379
