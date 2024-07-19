@@ -5,8 +5,8 @@ import logging
 
 
 class Database:
-    def __init__(self, db_name):
-        self.db_name = db_name
+    def __init__(self):
+        ...
 
     def __connect(self):
         try:
@@ -46,4 +46,4 @@ class Database:
                 self.__connect()
                 ping_try += 1
 
-        return self.ctx.cursor()
+        return self.cnx.cursor()
