@@ -21,6 +21,6 @@ class Application:
 app: Optional[Application] = None
 
 
-def load_app():
+def load_app() -> None:
     global app
     app = Application()
