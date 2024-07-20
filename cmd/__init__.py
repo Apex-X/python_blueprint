@@ -1,1 +1,1 @@
-from .root import application
+from .root import cli
