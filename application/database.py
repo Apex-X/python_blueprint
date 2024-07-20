@@ -1,7 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
-from config import cfg
-import logging
+from config import config
+from loguru import logger
 
 
 class Database:
@@ -11,11 +11,11 @@ class Database:
     def __connect(self):
         try:
             self.cnx = mysql.connector.connect(
-                host=cfg.database.host,
-                port=cfg.database.port,
-                user=cfg.database.user,
-                password=cfg.database.password,
-                database=cfg.database.db_name,
+                host=config().database.host,
+                port=config().database.port,
+                user=config().database.user,
+                password=config().database.password,
+                database=config().database.db_name,
             )
             self.cnx.reconnect()
         except mysql.connector.Error as err:
@@ -40,7 +40,7 @@ class Database:
                 self.cnx.ping(reconnect=True, attempts=3, delay=1)
                 break
             except mysql.connector.Error as err:
-                logging.error("error in mysql connection", err)
+                logger.error("error in mysql connection", err)
                 if ping_try > 5:
                     raise Exception("mysql connection error")
                 self.__connect()

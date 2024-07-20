@@ -1,5 +1,5 @@
 from loguru import logger
-from config import cfg
+from config import config
 import json
 import sys
 
@@ -21,4 +21,4 @@ def formatter(record):
 
 def init_logger() -> None:
     logger.remove(0)
-    logger.add(sys.stderr, format=formatter, level=cfg.log_level.upper())
+    logger.add(sys.stderr, format=formatter, level=config().log_level.upper())

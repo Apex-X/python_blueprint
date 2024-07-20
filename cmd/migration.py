@@ -1,4 +1,4 @@
-from config import cfg, load_config
+from config import config, load_config
 from log import init_logger
 from application.database import Database
 from loguru import logger
@@ -9,20 +9,20 @@ import glob
 def __create_database(csr):
     try:
         csr.execute(
-            f"CREATE DATABASE IF NOT EXISTS {cfg.database.db_name} DEFAULT CHARACTER SET 'utf8-mb4'",
+            f"CREATE DATABASE IF NOT EXISTS {config().database.db_name} DEFAULT CHARACTER SET 'utf8-mb4'",
         )
     except Exception as err:
         raise Exception('Failed creating database') from err
 
 
-def migrate(config: str):
+def migrate(config_path: str):
     """
     Migrate all migration files.\n
 
     e.g: python3 main.py migrate [config_path]\n
     """
 
-    load_config(config)
+    load_config(config_path)
     init_logger()
 
     try:
@@ -34,19 +34,19 @@ def migrate(config: str):
 
     # create database if not exists
     try:
-        cursor.execute(f'USE {cfg.database.db_name}')
+        cursor.execute(f'USE {config().database.db_name}')
         connection.commit()
     except Exception as err:
-        logger.info(f'Database {cfg.database.db_name} does not exists.', err)
+        logger.info(f'Database {config().database.db_name} does not exists.', err)
         __create_database(cursor)
-        cursor.execute(f'USE {cfg.database.db_name}')
-        logger.info(f'Database {cfg.database.db_name} created successfully.')
-        connection.database = cfg.database.db_name
+        cursor.execute(f'USE {config().database.db_name}')
+        logger.info(f'Database {config().database.db_name} created successfully.')
+        connection.database = config().database.db_name
 
     # create tables
     logger.info('Migrating...')
 
-    os.chdir(cfg.app.migrations_path)
+    os.chdir(config().app.migrations_path)
     for file in glob.glob('*.up.sql'):
         print(f'Running migration {file}')
         with open(file) as f:

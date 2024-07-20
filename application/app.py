@@ -1,6 +1,6 @@
 from typing import Optional
 from .database import Database
-from config import cfg
+from config import config
 import redis
 
 
@@ -11,16 +11,21 @@ class Application:
     def __init__(self):
         self.db = Database()
         self.redis_client = redis.Redis(
-            host=cfg.redis.host,
-            port=cfg.redis.port,
-            password=cfg.redis.password,
-            db=cfg.redis.db,
+            host=config().redis.host,
+            port=config().redis.port,
+            password=config().redis.password,
+            db=config().redis.db,
         )
 
 
-app: Optional[Application] = None
+application: Optional[Application] = None
 
 
 def load_app() -> None:
-    global app
-    app = Application()
+    global application
+    application = Application()
+
+
+def app() -> Application:
+    global application
+    return application
