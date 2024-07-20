@@ -26,6 +26,4 @@ def serve(
         http_server,
         host=config().http.host,
         port=config().http.port,
-        log_level=config().http.log_level,
     )
-    logger.info("server started successfully")

@@ -14,7 +14,6 @@ class HTTP(BaseModel):
     port: int
     workers: int
     debug: bool
-    log_level: str
 
 
 class Database(BaseModel):
