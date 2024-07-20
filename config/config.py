@@ -43,7 +43,7 @@ class Config(BaseModel):
 cfg: Config = None
 
 
-def load_config(config_path: str):
+def load_config(config_path: str) -> None:
     with open(config_path) as f:
         config = yaml.load(f, Loader=SafeLoader)
         global cfg
@@ -52,5 +52,5 @@ def load_config(config_path: str):
     print(Fore.YELLOW + "+----------------------------------------------+")
     print(Fore.BLUE + "|                 Config Loaded                |")
     print(Fore.YELLOW + "+----------------------------------------------+")
-    print(Fore.GREEN + json.dumps(cfg.model_dump()))
+    print(Fore.GREEN + json.dumps(cfg.model_dump(), indent=4))
     print(Fore.YELLOW + "+----------------------------------------------+")
