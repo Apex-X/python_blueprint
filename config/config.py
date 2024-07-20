@@ -54,3 +54,12 @@ def load_config(config_path: str) -> None:
     print(Fore.YELLOW + "+----------------------------------------------+")
     print(Fore.GREEN + json.dumps(cfg.model_dump(), indent=4))
     print(Fore.YELLOW + "+----------------------------------------------+")
+
+
+def config() -> Config:
+    """
+    Get the configuration object
+    :return: configuration object
+    """
+    global cfg
+    return cfg
