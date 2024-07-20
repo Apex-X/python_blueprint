@@ -19,6 +19,6 @@ def formatter(record):
     return "{extra[serialized]}\n"
 
 
-def init_logger():
+def init_logger() -> None:
     logger.remove(0)
     logger.add(sys.stderr, format=formatter, level=cfg.log_level.upper())
