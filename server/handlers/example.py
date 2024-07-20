@@ -1,14 +1,16 @@
-from http import server
 from pydantic import BaseModel
-from fastapi import status
+from fastapi import status, APIRouter
 from fastapi.responses import JSONResponse
+
+
+router = APIRouter()
 
 
 class ExampleResponse(BaseModel):
     message: str
 
 
-@server.get("/example")
+@router.get("/example")
 def get_example():
     response = ExampleResponse(message="Hello World")
 
