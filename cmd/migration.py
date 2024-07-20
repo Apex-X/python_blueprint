@@ -2,7 +2,6 @@ from config import cfg, load_config
 from log import init_logger
 from application.database import Database
 from loguru import logger
-from .root import application
 import os
 import glob
 
@@ -16,7 +15,6 @@ def __create_database(csr):
         raise Exception('Failed creating database') from err
 
 
-@application.command('migrate')
 def migrate(config: str):
     """
     Migrate all migration files.\n
