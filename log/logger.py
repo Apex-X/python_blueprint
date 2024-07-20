@@ -6,10 +6,10 @@ import sys
 
 def serialize(record):
     subset = {
-        "time": record["time"]["repr"],
+        "time": str(record["time"]),
         "level": record["level"].name,
         "message": record["message"],
-        "path": record["file"]["path"]+":"+str(record["line"]),
+        "path": record["file"].path+":"+str(record["line"]),
     }
     return json.dumps(subset)
 
