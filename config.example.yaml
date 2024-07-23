@@ -1,4 +1,5 @@
 log_level: "debug"
+locale_path: "./assets/data/locale"
 app:
   migrations_path: "./migrations"
 http:

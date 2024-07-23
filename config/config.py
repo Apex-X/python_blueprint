@@ -33,6 +33,7 @@ class Redis(BaseModel):
 
 class Config(BaseModel):
     log_level: str
+    locale_path: str
     app: App
     http: HTTP
     database: Database

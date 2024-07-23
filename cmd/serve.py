@@ -6,6 +6,7 @@ from log import init_logger
 from loguru import logger
 import uvicorn
 import typer
+import i18n
 
 
 def serve(
@@ -17,6 +18,9 @@ def serve(
     load_config(config_path)
     init_logger()
     logger.info("init logger successfully")
+
+    i18n.load_path.append(config().locale_path)
+    logger.info("load locale successfully")
 
     load_app()
     logger.info("load application successfully")
