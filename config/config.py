@@ -16,19 +16,23 @@ class HTTP(BaseModel):
     debug: bool
 
 
+# @apex:database:tag
 class Database(BaseModel):
     host: str
     port: int
     user: str
     password: str
     db_name: str
+# @apex:end
 
 
+# @apex:redis:tag
 class Redis(BaseModel):
     host: str
     port: int
     password: str
     db: int
+# @apex:end
 
 
 class Config(BaseModel):
@@ -36,8 +40,12 @@ class Config(BaseModel):
     locale_path: str
     app: App
     http: HTTP
+    # @apex:database:tag
     database: Database
+    # @apex:end
+    # @apex:redis:tag
     redis: Redis
+    # @apex:end
 
 
 cfg: Config = None
