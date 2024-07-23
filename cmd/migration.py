@@ -1,3 +1,4 @@
+# @apex:database:tag
 from config import config, load_config
 from log import init_logger
 from application.database import Database
@@ -57,3 +58,4 @@ def migrate(config_path: str):
                 logger.error(e)
 
     logger.info('Migration finished successfully')
+# @apex:end
