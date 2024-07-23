@@ -1,3 +1,4 @@
+# @apex:database:tag
 import mysql.connector
 from mysql.connector import errorcode
 from config import config
@@ -47,3 +48,4 @@ class Database:
                 ping_try += 1
 
         return self.cnx.cursor()
+# @apex:end
