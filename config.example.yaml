@@ -7,14 +7,18 @@ http:
   port: 8080
   workers: 1
   debug: false
+# @apex:database:tag
 database:
   host: "127.0.0.1"
   port: 3306
   user: "@apex:project_name:var_app"
   password: "password"
   db_name: "@apex:project_name:var"
+# @apex:end
+# @apex:redis:tag
 redis:
   host: "127.0.0.1"
   port: 6379
   password: ""
   db: 0
+# @apex:end
