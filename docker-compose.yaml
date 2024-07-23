@@ -8,6 +8,7 @@ services:
     volumes:
       - .:/app
 
+  # @apex:database:tag
   mariadb:
     image: mariadb:10.4.8
     ports:
@@ -20,12 +21,17 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+  # @apex:end
 
+  # @apex:redis:tag
   redis:
     image: redis:5.0.7
     ports:
       - 6379:6379
+  # @apex:end
 
+# @apex:database:tag
 volumes:
   db-data:
     driver: local
+# @apex:end
